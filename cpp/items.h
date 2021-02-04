@@ -19,16 +19,16 @@ public:
 
   uint64_t operator+(uint64_t a) {return m_size + a;}
   uint64_t operator-(uint64_t a) {return m_size - a;}
-  uint64_t operator*(const float &a) {return m_size * a;}
-  uint64_t operator/(const float &a) {return m_size / a;}
+  uint64_t operator*(float a) {return m_size * a;}
+  uint64_t operator/(float a) {return m_size / a;}
   uint64_t &operator++() {return ++m_size;}
   uint64_t operator++(int) {return m_size++;}
   uint64_t &operator--() {return --m_size;}
   uint64_t operator--(int) {return m_size--;}
-  uint64_t &operator+=(const uint64_t &a) {return m_size += a;}
-  uint64_t &operator-=(const uint64_t &a) {return m_size -= a;}
-  uint64_t &operator*=(const uint64_t &a) {return m_size *= a;}
-  uint64_t &operator/=(const uint64_t &a) {return m_size /= a;}
+  uint64_t &operator+=(uint64_t a) {return m_size += a;}
+  uint64_t &operator-=(uint64_t a) {return m_size -= a;}
+  uint64_t &operator*=(uint64_t a) {return m_size *= a;}
+  uint64_t &operator/=(uint64_t a) {return m_size /= a;}
   bool operator==(const ItemStack &item) const {return m_size == item.Size();}
   bool operator!=(const ItemStack &item) const {return m_size != item.Size();}
   bool operator>(const ItemStack &item) const {return m_size > item.Size();}
@@ -62,15 +62,15 @@ public:
   ItemContainer();
   ~ItemContainer();
 
-  virtual bool HasItem(const uint32_t &id) {return Iter(id) != m_items.end();}
-  virtual uint64_t Count(const uint32_t &id) {return Access(id).Size();}
+  virtual bool HasItem(uint32_t id) {return Iter(id) != m_items.end();}
+  virtual uint64_t Count(uint32_t id) {return Access(id).Size();}
   virtual bool operator+=(Iq iq);             // return true if item has been added successfully
   virtual bool operator-=(Iq iq);             // return true if item has been removed successfully  
   virtual bool Move(It it);                   // return true if items have been moved successfully
   virtual bool MoveAll(ItemContainer *cont);  // return true if all items have been moved into this containter successfully
 
 private:
-  std::vector<ItemStack>::iterator Iter(const uint32_t &id);  // find iterator by id
+  std::vector<ItemStack>::iterator Iter(uint32_t id);  // find iterator by id
 
   std::vector<ItemStack> m_items;
 };

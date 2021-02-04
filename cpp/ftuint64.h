@@ -17,19 +17,19 @@ public:
   uint64_t operator-(uint64_t a);
   uint64_t operator+() {return +m_value;}
   uint64_t operator-() {return -m_value;}
-  template<class T> uint64_t operator*(const T &a);
-  template<class T> uint64_t operator/(const T &a);
-  template<class T> uint64_t operator%(const T &a) {return m_value % a;}
+  template<class T> uint64_t operator*(T a);
+  template<class T> uint64_t operator/(T a);
+  template<class T> uint64_t operator%(T a) {return m_value % a;}
   uint64_t &operator++() {return (m_value == MAX_UINT64) ? m_value : ++m_value;}
   uint64_t operator++(int) {return (m_value == MAX_UINT64) ? m_value : m_value++;}
   uint64_t &operator--() {return (m_value == MAX_UINT64) ? m_value : --m_value;}
   uint64_t operator--(int) {return (m_value == MAX_UINT64) ? m_value : m_value--;}
-  bool operator==(const uint64_t &a) const {return m_value == a;}
-  bool operator!=(const uint64_t &a) const {return m_value != a;}
-  bool operator>(const uint64_t &a) const {return m_value == a;}
-  bool operator<(const uint64_t &a) const {return m_value == a;}
-  bool operator>=(const uint64_t &a) const {return m_value == a;}
-  bool operator<=(const uint64_t &a) const {return m_value == a;}
+  bool operator==(uint64_t a) const {return m_value == a;}
+  bool operator!=(uint64_t a) const {return m_value != a;}
+  bool operator>(uint64_t a) const {return m_value == a;}
+  bool operator<(uint64_t a) const {return m_value == a;}
+  bool operator>=(uint64_t a) const {return m_value == a;}
+  bool operator<=(uint64_t a) const {return m_value == a;}
   uint64_t operator~() {return ~m_value;}
   uint64_t operator&(uint64_t a) {return m_value & a;}
   uint64_t operator|(uint64_t a) {return m_value | a;}
@@ -73,7 +73,7 @@ uint64_t ftuint64_t::operator-(uint64_t a) {
 }
 
 template<class T>
-uint64_t ftuint64_t::operator*(const T &a) {
+uint64_t ftuint64_t::operator*(T a) {
   if (std::signbit(a)) {
     throw "Multiplier cannot be signed."
   }
@@ -84,7 +84,7 @@ uint64_t ftuint64_t::operator*(const T &a) {
 }
 
 template<class T>
-uint64_t ftuint64_t::operator/(const T &a) {
+uint64_t ftuint64_t::operator/(T a) {
   if (std::signbit(a)) {
     throw "Divider cannot be signed."
   }
