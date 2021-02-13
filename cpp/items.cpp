@@ -3,7 +3,7 @@
 #include <algorithm>
 
 std::vector<ItemStack>::iterator ItemContainer::Iter(uint32_t id) {
-  static const auto callback = [](const ItemStack &item) {return item.Id() == id;};
+  static const auto callback = [id](const ItemStack &item) {return item.Id() == id;};
   return std::find_if(m_items.begin(), m_items.end(), callback);
 }
 
